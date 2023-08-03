@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}RecieptReturnRequest index{% endblock %}
+
+{% block body %}
+    <h1>RecieptReturnRequest index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Code</th>
+                <th>Description</th>
+                <th>CreatedAt</th>
+                <th>UpdatedAt</th>
+                <th>StartNumber</th>
+                <th>EndNumber</th>
+                <th>Exceptional</th>
+                <th>RequestedAt</th>
+                <th>TotalPrice</th>
+                <th>Document</th>
+                <th>ApprovedAt</th>
+                <th>RecievedAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reciept_return_request in reciept_return_requests %}
+            <tr>
+                <td>{{ reciept_return_request.id }}</td>
+                <td>{{ reciept_return_request.name }}</td>
+                <td>{{ reciept_return_request.code }}</td>
+                <td>{{ reciept_return_request.description }}</td>
+                <td>{{ reciept_return_request.createdAt ? reciept_return_request.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ reciept_return_request.updatedAt ? reciept_return_request.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ reciept_return_request.startNumber }}</td>
+                <td>{{ reciept_return_request.endNumber }}</td>
+                <td>{{ reciept_return_request.exceptional }}</td>
+                <td>{{ reciept_return_request.requestedAt ? reciept_return_request.requestedAt|date('Y-m-d') : '' }}</td>
+                <td>{{ reciept_return_request.totalPrice }}</td>
+                <td>{{ reciept_return_request.document }}</td>
+                <td>{{ reciept_return_request.approvedAt ? reciept_return_request.approvedAt|date('Y-m-d') : '' }}</td>
+                <td>{{ reciept_return_request.recievedAt ? reciept_return_request.recievedAt|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_reciept_return_request_show', {'id': reciept_return_request.id}) }}">show</a>
+                    <a href="{{ path('app_reciept_return_request_edit', {'id': reciept_return_request.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="15">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_reciept_return_request_new') }}">Create new</a>
+{% endblock %}

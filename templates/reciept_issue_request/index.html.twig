@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}RecieptIssueRequest index{% endblock %}
+
+{% block body %}
+    <h1>RecieptIssueRequest index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Code</th>
+                <th>Description</th>
+                <th>CreatedAt</th>
+                <th>UpdatedAt</th>
+                <th>StartNumber</th>
+                <th>EndNumber</th>
+                <th>Exceptional</th>
+                <th>RequestDocument</th>
+                <th>RequestedAt</th>
+                <th>ApprovedAt</th>
+                <th>RecievedAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reciept_issue_request in reciept_issue_requests %}
+            <tr>
+                <td>{{ reciept_issue_request.id }}</td>
+                <td>{{ reciept_issue_request.name }}</td>
+                <td>{{ reciept_issue_request.code }}</td>
+                <td>{{ reciept_issue_request.description }}</td>
+                <td>{{ reciept_issue_request.createdAt ? reciept_issue_request.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ reciept_issue_request.updatedAt ? reciept_issue_request.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ reciept_issue_request.startNumber }}</td>
+                <td>{{ reciept_issue_request.endNumber }}</td>
+                <td>{{ reciept_issue_request.exceptional }}</td>
+                <td>{{ reciept_issue_request.requestDocument }}</td>
+                <td>{{ reciept_issue_request.requestedAt ? reciept_issue_request.requestedAt|date('Y-m-d') : '' }}</td>
+                <td>{{ reciept_issue_request.approvedAt ? reciept_issue_request.approvedAt|date('Y-m-d') : '' }}</td>
+                <td>{{ reciept_issue_request.recievedAt ? reciept_issue_request.recievedAt|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_reciept_issue_request_show', {'id': reciept_issue_request.id}) }}">show</a>
+                    <a href="{{ path('app_reciept_issue_request_edit', {'id': reciept_issue_request.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="14">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_reciept_issue_request_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New RecieptReturnRequest{% endblock %}
+
+{% block body %}
+    <h1>Create new RecieptReturnRequest</h1>
+
+    {{ include('reciept_return_request/_form.html.twig') }}
+
+    <a href="{{ path('app_reciept_return_request_index') }}">back to list</a>
+{% endblock %}

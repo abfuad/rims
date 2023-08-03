@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New RecieptIssueRequest{% endblock %}
+
+{% block body %}
+    <h1>Create new RecieptIssueRequest</h1>
+
+    {{ include('reciept_issue_request/_form.html.twig') }}
+
+    <a href="{{ path('app_reciept_issue_request_index') }}">back to list</a>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}RecieptGroup index{% endblock %}
+
+{% block body %}
+    <h1>RecieptGroup index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Code</th>
+                <th>Description</th>
+                <th>CreatedAt</th>
+                <th>UpdatedAt</th>
+                <th>StartNumber</th>
+                <th>EndNumber</th>
+                <th>Document</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reciept_group in reciept_groups %}
+            <tr>
+                <td>{{ reciept_group.id }}</td>
+                <td>{{ reciept_group.name }}</td>
+                <td>{{ reciept_group.code }}</td>
+                <td>{{ reciept_group.description }}</td>
+                <td>{{ reciept_group.createdAt ? reciept_group.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ reciept_group.updatedAt ? reciept_group.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ reciept_group.startNumber }}</td>
+                <td>{{ reciept_group.endNumber }}</td>
+                <td>{{ reciept_group.document }}</td>
+                <td>
+                    <a href="{{ path('app_reciept_group_show', {'id': reciept_group.id}) }}">show</a>
+                    <a href="{{ path('app_reciept_group_edit', {'id': reciept_group.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_reciept_group_new') }}">Create new</a>
+{% endblock %}
